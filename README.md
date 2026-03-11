@@ -1,35 +1,34 @@
 # Instagram Tech Influencer Analysis (SQL)
-
 This project was completed as part of the Codebasics Virtual Internship.
 
-Objective:
-Analyze Instagram influencer performance using SQL queries to derive insights on reach, engagement, impressions, and follower growth.
+## Objective
+Analyze Instagram influencer performance data using SQL to derive insights on reach, engagement, impressions, and follower growth.
 
-Key Analysis:
+## Files Included
+- sql_questions.pdf → Assignment questions
 
-• Post type reach contribution
+- QUERY_01.sql to QUERY_10.sql → SQL solutions
 
-• Highest and lowest impressions
+- Q1_output.csv to Q10_output.csv → Query results (outputs)
 
-• Weekend posting analysis
+## Key Analysis
+- Unique post types identification
 
-• Monthly account growth
+- Highest & lowest impressions by content format
 
-• Post category engagement
+- Weekend posting analysis
 
-• Quarterly engagement trends
+- Monthly profile visits & follower growth
 
-• Top dates for follower growth
+- Post category engagement analysis
 
-• Share behaviour by post type
+- Reach percentage by post type
 
-Tools Used:
-SQL (MySQL)
+- Quarterly engagement trends
 
-Project Files:
+- Share behaviour analysis
 
-• SQL Queries
+## Tools Used
+- MySQL
 
-• Output Reports
-
-• Business Insights Presentation
+- SQL
