@@ -32,3 +32,15 @@ Analyze Instagram influencer performance data using SQL to derive insights on re
 - MySQL
 
 - SQL
+
+## Query 01 – Count Unique Post Types
+
+### SQL Query
+
+```sql
+SELECT
+COUNT(DISTINCT post_type) AS unique_post_types
+FROM gdb0120.fact_content;
+```
+
+
