@@ -268,3 +268,28 @@ ORDER BY MIN(date) OVER (PARTITION BY month), rn;
 
 ![Question 09 Output](OUTPUTS/OUTPUT_09.png)
 
+## Question 10 – Create a stored procedure that takes the 'Week_no' as input and generates a report displaying the total shares for each 'Post_type'. The output of the procedure should consist of two columns:
+• post_type  
+
+• total_shares
+
+### SQL Query
+
+```sql
+DROP PROCEDURE IF EXISTS gdb0120.get_total_shares_by_post_type_for_week;
+DELIMITER $$
+
+CREATE PROCEDURE gdb0120.get_total_shares_by_post_type_for_week(IN p_week_no VARCHAR(10))
+BEGIN
+SELECT fc.post_type,
+SUM(fc.shares) AS total_shares FROM gdb0120.fact_content fc JOIN gdb0120.dim_dates dd ON dd.date = fc.date
+WHERE dd.week_no = p_week_no GROUP BY fc.post_type ORDER BY total_shares DESC; 
+END $$
+DELIMITER ;
+
+CALL gdb0120.get_total_shares_by_post_type_for_week('W1');
+```
+### Output
+
+![Question 10 Output](OUTPUTS/OUTPUT_10.png)
+
