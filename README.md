@@ -44,7 +44,23 @@ FROM gdb0120.fact_content;
 ```
 ### Output
 
-![Query 01 Output](OUTPUTS/OUTPUT_01.png) 
+![Question 01 Output](OUTPUTS/OUTPUT_01.png)
+
+## Question 02 – What are the highest and lowest recorded impressions for each post type? 
+
+### SQL Query
+
+``` SELECT
+  post_type,
+  MAX(impressions) AS highest_impressions,
+  MIN(impressions) AS lowest_impressions
+FROM gdb0120.fact_content
+GROUP BY post_type
+ORDER BY post_type;
+```
+### Output
+
+![Question 02 Output](OUTPUTS/OUTPUT_02.png)
 
 
 
