@@ -111,9 +111,7 @@ ORDER BY MIN(dd.date);
 
 ![Question 04 Output](OUTPUTS/OUTPUT_04.png)
 
-## Question 05 – Write a CTE that calculates the total number of 'likes’ for each 
-'post_category' during the month of 'July' and subsequently, arrange the 
-'post_category' values in descending order according to their total likes.
+## Question 05 – Write a CTE that calculates the total number of 'likes’ for each 'post_category' during the month of 'July' and subsequently, arrange the 'post_category' values in descending order according to their total likes.
 
 ### SQL Query
 
