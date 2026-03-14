@@ -50,13 +50,14 @@ FROM gdb0120.fact_content;
 
 ### SQL Query
 
-``` SELECT
+```sql
+  SELECT
   post_type,
   MAX(impressions) AS highest_impressions,
   MIN(impressions) AS lowest_impressions
-FROM gdb0120.fact_content
-GROUP BY post_type
-ORDER BY post_type;
+  FROM gdb0120.fact_content
+  GROUP BY post_type
+  ORDER BY post_type;
 ```
 ### Output
 
@@ -66,7 +67,8 @@ ORDER BY post_type;
 
 ### SQL Query
 
-``` SELECT fc.*
+```sql
+SELECT fc.*
 FROM gdb0120.fact_content fc 
 JOIN gdb0120.dim_dates dd ON dd.date = fc.date 
 WHERE dd.weekday_or_weekend = 'Weekend' 
@@ -81,7 +83,7 @@ AND dd.month_name IN ('March', 'April')
 INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/weekend_posts_mar_apr.csv'
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
- LINES TERMINATED BY '\n';
+LINES TERMINATED BY '\n';
 ```
 ### Output
 
@@ -97,15 +99,16 @@ ENCLOSED BY '"'
 
 ### SQL Query
 
-``` SELECT
+```sql
+  SELECT
   dd.month_name,
   SUM(fa.profile_visits) AS total_profile_visits,
   SUM(fa.new_followers)  AS total_new_followers
-FROM gdb0120.fact_account fa
-JOIN gdb0120.dim_dates dd
+  FROM gdb0120.fact_account fa
+  JOIN gdb0120.dim_dates dd
   ON dd.date = fa.date
-GROUP BY dd.month_name
-ORDER BY MIN(dd.date);
+  GROUP BY dd.month_name
+  ORDER BY MIN(dd.date);
 ```
 ### Output
 
@@ -115,21 +118,22 @@ ORDER BY MIN(dd.date);
 
 ### SQL Query
 
-``` WITH july_likes AS (
-  SELECT
-    fc.post_category,
-    SUM(fc.likes) AS total_likes
-  FROM gdb0120.fact_content fc
-  JOIN gdb0120.dim_dates dd
-    ON dd.date = fc.date
-  WHERE dd.month_name = 'July'
-  GROUP BY fc.post_category
+```sql
+   WITH july_likes AS (
+   SELECT
+   fc.post_category,
+   SUM(fc.likes) AS total_likes
+   FROM gdb0120.fact_content fc
+   JOIN gdb0120.dim_dates dd
+   ON dd.date = fc.date
+   WHERE dd.month_name = 'July'
+   GROUP BY fc.post_category
 )
-SELECT
-  post_category,
-  total_likes
-FROM july_likes
-ORDER BY total_likes DESC;
+   SELECT
+   post_category,
+   total_likes
+   FROM july_likes
+   ORDER BY total_likes DESC;
 ```
 ### Output
 
@@ -151,15 +155,16 @@ Example:
 
 ### SQL Query
 
-```SELECT
+```sql
+  SELECT
   dd.month_name,
   GROUP_CONCAT(DISTINCT fc.post_category ORDER BY fc.post_category SEPARATOR ',') AS post_category_names,
   COUNT(DISTINCT fc.post_category) AS post_category_count
-FROM gdb0120.fact_content fc
-JOIN gdb0120.dim_dates dd
+  FROM gdb0120.fact_content fc
+  JOIN gdb0120.dim_dates dd
   ON dd.date = fc.date
-GROUP BY dd.month_name
-ORDER BY MIN(dd.date);
+  GROUP BY dd.month_name
+  ORDER BY MIN(dd.date);
 ```
 ### Output
 
