@@ -33,7 +33,7 @@ Analyze Instagram influencer performance data using SQL to derive insights on re
 
 - SQL
 
-## Query 01 – Count Unique Post Types
+## Question 01 – How many unique post types are found in the 'fact_content' table?
 
 ### SQL Query
 
